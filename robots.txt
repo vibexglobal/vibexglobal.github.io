@@ -1,0 +1,65 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vibex-global.com/sitemap.xml
+
+
+/* Pega estas 5 fichas dentro de const products = [ ... ], en la sección PERFUMERÍA.
+   IMPORTANTE: pon tu precio real en cada price (ahora está en 0 a propósito, no inventé ninguno).
+   Las fotos usan la carpeta img2/perfumes2/<nombre>/<nombre>-1.png: cámbiala si tus carpetas se llaman distinto. */
+
+  {
+    id: 11,
+    name: "Khamrah",
+    category: "Perfumería",
+    price: 0,   // ← PON AQUÍ TU PRECIO
+    label: "",
+    description: "Canela, nuez moscada y dátiles con fondo licoroso. Una fragancia cálida, gourmand e imponente.",
+    descriptionEn: "Cinnamon, nutmeg and dates over a boozy base. A warm, gourmand and commanding fragrance.",
+    url: "perfume-khamrah.html",
+    image: "img2/perfumes2/khamrah/khamrah-1.png"
+  },
+  {
+    id: 12,
+    name: "Armaf Odyssey Mandarin Sky",
+    category: "Perfumería",
+    price: 0,   // ← PON AQUÍ TU PRECIO
+    label: "",
+    description: "Mandarina chispeante y caramelo cremoso. Energética, brillante y versátil.",
+    descriptionEn: "Sparkling mandarin and creamy caramel. Energetic, bright and versatile.",
+    url: "perfume-armaf-odyssey-mandarin-sky.html",
+    image: "img2/perfumes2/armaf-odyssey-mandarin-sky/armaf-odyssey-mandarin-sky-1.png"
+  },
+  {
+    id: 18,
+    name: "Armaf Odyssey Mandarin Sky Elixir",
+    category: "Perfumería",
+    price: 0,   // ← PON AQUÍ TU PRECIO
+    label: "",
+    description: "Mandarina especiada, incienso resinoso y vainilla profunda. Intensa para la noche.",
+    descriptionEn: "Spiced mandarin, resinous incense and deep vanilla. Intense for the night.",
+    url: "perfume-armaf-odyssey-mandarin-sky-elixir.html",
+    image: "img2/perfumes2/armaf-odyssey-mandarin-sky-elixir/armaf-odyssey-mandarin-sky-elixir-1.png"
+  },
+  {
+    id: 19,
+    name: "Afnan 9PM Elixir",
+    category: "Perfumería",
+    price: 0,   // ← PON AQUÍ TU PRECIO
+    label: "",
+    description: "Nuez moscada, cuero refinado y vainilla oscura. Sensual y de rendimiento superior.",
+    descriptionEn: "Nutmeg, refined leather and dark vanilla. Sensual with superior performance.",
+    url: "perfume-afnan-9pm-elixir.html",
+    image: "img2/perfumes2/afnan-9pm-elixir/afnan-9pm-elixir-1.png"
+  },
+  {
+    id: 20,
+    name: "Afnan 9PM Rebel",
+    category: "Perfumería",
+    price: 0,   // ← PON AQUÍ TU PRECIO
+    label: "",
+    description: "Piña jugosa, manzana crujiente y maderas ambarinas. Frutal, limpia y vibrante.",
+    descriptionEn: "Juicy pineapple, crisp apple and amber woods. Fruity, clean and vibrant.",
+    url: "perfume-afnan-9pm-rebel.html",
+    image: "img2/perfumes2/afnan-9pm-rebel/afnan-9pm-rebel-1.png"
+  },

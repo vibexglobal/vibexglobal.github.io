@@ -1,0 +1,833 @@
+Estilos producto · CSS
+/* ==================================================
+   VIBEX GLOBAL — TARJETAS-ENLACE Y PÁGINA DE PRODUCTO
+   Va DESPUÉS de estilos.css y estilos-tienda.css,
+   en index.html Y en producto.html.
+   ================================================== */
+ 
+/* ---------- Tarjetas del catálogo: toda la tarjeta es un enlace ---------- */
+ 
+a.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+ 
+.product-visual {
+  overflow: hidden;
+}
+ 
+.product-card .product-image-button {
+  cursor: pointer;
+}
+ 
+.product-card .product-image-button img {
+  transition: transform 600ms var(--ease);
+}
+ 
+.product-card:hover .product-image-button img {
+  transform: scale(1.035);
+}
+ 
+.product-card .product-name {
+  transition: color 200ms ease;
+}
+ 
+.product-card:hover .product-name {
+  color: var(--verde);
+}
+ 
+/* La foto llena TODO el marco, sin bordes (el diseño base le ponía un margen interior) */
+.product-card .product-image-button {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: var(--beige);
+}
+ 
+.product-card .product-image-button > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+/* Segunda foto: aparece suavemente al pasar el cursor (solo computadora) */
+.product-hover-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+ 
+@media (hover: hover) {
+  .product-card:hover .product-hover-image {
+    opacity: 1;
+  }
+}
+ 
+/* Categoría y etiqueta en una sola línea, debajo de la foto */
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 16px;
+}
+ 
+.product-meta .product-label {
+  position: static;
+  padding: 0;
+  background: transparent;
+  font-size: 9px;
+  white-space: nowrap;
+}
+ 
+/* Frase corta: siempre reserva su espacio para que las tarjetas queden alineadas */
+.product-card .product-description {
+  min-height: 1.7em;
+  margin: 0 0 14px;
+  font-size: 12.5px;
+}
+ 
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--dorado-texto);
+  color: var(--dorado-texto);
+  font-size: 13px;
+  font-weight: 600;
+  transition: gap 220ms var(--ease);
+}
+ 
+.product-card:hover .card-link {
+  gap: 10px;
+}
+ 
+/* ---------- Página de producto ---------- */
+ 
+.pdp-page {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 34px var(--page-gutter) 100px;
+  background: var(--paper);
+}
+ 
+body:has(.pdp-page) {
+  background: var(--paper);
+}
+ 
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-bottom: 30px;
+  color: var(--suave);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+ 
+.breadcrumb a:hover {
+  color: var(--verde);
+}
+ 
+.breadcrumb .current {
+  color: var(--ink);
+}
+ 
+.pdp {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 72px);
+}
+ 
+/* Galería */
+ 
+.pdp-gallery {
+  position: sticky;
+  top: 110px;
+}
+ 
+.pdp-stage {
+  position: relative;
+  display: flex;
+  aspect-ratio: 4 / 5;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  background: var(--beige);
+  color: var(--suave);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+ 
+.pdp-stage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* la foto completa, sin recortar textos */
+}
+ 
+.pdp-zoom {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 10px 16px;
+  border: 0;
+  background: rgba(255, 254, 250, 0.94);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+ 
+.pdp-zoom:hover {
+  background: var(--white);
+  color: var(--verde);
+}
+ 
+.pdp-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+ 
+.pdp-thumb {
+  width: 76px;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background: var(--beige);
+}
+ 
+.pdp-thumb.active {
+  border-color: var(--verde);
+}
+ 
+.pdp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+/* Información */
+ 
+.pdp-eyebrow {
+  display: block;
+  color: var(--dorado-texto);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+ 
+.pdp-info .product-label {
+  position: static;
+  margin-top: 14px;
+}
+ 
+.pdp-title {
+  margin: 12px 0 18px;
+  font-family: var(--serif);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+ 
+.pdp-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-bottom: 18px;
+}
+ 
+.pdp-price {
+  color: var(--verde);
+  font-family: var(--sans);
+  font-size: clamp(26px, 3vw, 34px);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+ 
+.pdp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(31, 74, 53, 0.25);
+  border-radius: 999px;
+  background: #e6efe6;
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: 600;
+}
+ 
+.icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+ 
+.icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+ 
+.pdp-description {
+  max-width: 560px;
+  margin: 0 0 14px;
+  color: var(--suave);
+  font-size: 14px;
+  line-height: 1.85;
+}
+ 
+.pdp-note-adults {
+  margin: 0 0 14px;
+  color: var(--dorado-texto);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+ 
+.pdp-stock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  color: var(--verde);
+  font-size: 13px;
+  font-weight: 600;
+}
+ 
+.pdp-stock::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--verde);
+  content: "";
+}
+ 
+.pdp-stock--low {
+  color: var(--dorado-texto);
+}
+ 
+.pdp-stock--low::before {
+  background: var(--gold);
+}
+ 
+/* Compra */
+ 
+.pdp-buy {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+ 
+.pdp-quantity {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+ 
+.pdp-quantity button {
+  width: 44px;
+  height: 52px;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+}
+ 
+.pdp-quantity span {
+  min-width: 34px;
+  text-align: center;
+  font-size: 15px;
+}
+ 
+.pdp-add {
+  flex: 1;
+  min-height: 54px;
+  padding: 0 14px;
+  border: 1px solid var(--verde);
+  background: var(--verde);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 200ms ease;
+}
+ 
+.pdp-add:hover {
+  background: var(--verde-oscuro);
+}
+ 
+.pdp-ask {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--verde);
+  background: transparent;
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 200ms ease, color 200ms ease;
+}
+ 
+.pdp-ask:hover {
+  background: var(--verde);
+  color: var(--white);
+}
+ 
+/* Bloques: ideal para, pirámide, ficha técnica */
+ 
+.pdp-block {
+  margin-top: 32px;
+}
+ 
+.pdp-block-title {
+  margin: 0 0 12px;
+  color: var(--suave);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+ 
+.pdp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+ 
+.pdp-chip {
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  font-size: 13px;
+}
+ 
+.pdp-pyramid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+ 
+.pdp-note {
+  padding: 14px 16px 18px;
+  border-top: 2px solid var(--gold);
+  background: #f1ecdf;
+}
+ 
+.pdp-note b {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dorado-texto);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+ 
+.pdp-note span {
+  font-size: 14px;
+  line-height: 1.6;
+}
+ 
+.pdp-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 30px;
+  border-top: 1px solid var(--line);
+}
+ 
+.pdp-spec {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+ 
+.pdp-spec small {
+  display: block;
+  color: var(--suave);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+ 
+.pdp-spec span {
+  display: block;
+  margin-top: 3px;
+  font-size: 15px;
+}
+ 
+/* Garantía y beneficios */
+ 
+.pdp-warranty {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  border: 1px solid rgba(180, 154, 101, 0.45);
+  background: #f1ecdf;
+  color: var(--verde);
+  text-align: left;
+  transition: background 200ms ease;
+}
+ 
+.pdp-warranty:hover {
+  background: #ebe4d3;
+}
+ 
+.pdp-warranty .icon svg {
+  width: 24px;
+  height: 24px;
+}
+ 
+.pdp-warranty-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+ 
+.pdp-warranty-text strong {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+ 
+.pdp-warranty-text span {
+  color: var(--ink);
+  font-size: 13px;
+}
+ 
+.pdp-warranty-link {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 600;
+}
+ 
+.pdp-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+  color: var(--suave);
+  font-size: 12px;
+  line-height: 1.5;
+}
+ 
+.pdp-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+ 
+.pdp-benefit .icon {
+  color: var(--verde);
+}
+ 
+/* Relacionados y producto no encontrado */
+ 
+.pdp-related {
+  margin-top: 90px;
+  padding-top: 50px;
+  border-top: 1px solid var(--line);
+}
+ 
+.pdp-related h2 {
+  margin: 0 0 32px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+ 
+.pdp-missing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 60px 0;
+}
+ 
+.pdp-missing h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+}
+ 
+.pdp-missing p {
+  max-width: 460px;
+  margin: 0;
+  color: var(--suave);
+}
+ 
+/* ---------- Imagen ampliada ---------- */
+ 
+.lightbox {
+  position: fixed;
+  z-index: 95;
+  inset: 0;
+  display: grid;
+  visibility: hidden;
+  place-items: center;
+  padding: 24px;
+  background: rgba(12, 15, 12, 0.88);
+  opacity: 0;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+ 
+.lightbox.open {
+  visibility: visible;
+  opacity: 1;
+}
+ 
+.lightbox img {
+  max-width: min(1100px, 100%);
+  max-height: 88dvh;
+  object-fit: contain;
+  background: var(--white);
+}
+ 
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 200;
+  line-height: 1;
+}
+ 
+/* ---------- Ventana emergente de la garantía ---------- */
+ 
+.policy-modal {
+  position: fixed;
+  z-index: 96;
+  inset: 0;
+  display: grid;
+  visibility: hidden;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+ 
+.policy-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+ 
+/* Fondo opaco: oscurece toda la página detrás */
+.policy-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(10, 13, 10, 0.74);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+ 
+.policy-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(780px, 100%);
+  max-height: min(88dvh, 820px);
+  flex-direction: column;
+  background: var(--paper);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  transform: translateY(14px);
+  transition: transform 300ms var(--ease);
+}
+ 
+.policy-modal.open .policy-panel {
+  transform: translateY(0);
+}
+ 
+.policy-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 30px 20px;
+  border-bottom: 1px solid var(--line);
+}
+ 
+.policy-header .eyebrow {
+  color: var(--dorado-texto);
+}
+ 
+.policy-header h2 {
+  margin: 8px 0 0;
+  color: var(--verde);
+  font-family: var(--serif);
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+ 
+.policy-close {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--suave);
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 1;
+}
+ 
+.policy-close:hover {
+  color: var(--verde);
+}
+ 
+.policy-body {
+  overflow-y: auto;
+  padding: 24px 30px 30px;
+  overscroll-behavior: contain;
+}
+ 
+.policy-intro {
+  margin: 0 0 20px;
+  color: var(--suave);
+  font-size: 15px;
+  line-height: 1.8;
+}
+ 
+.policy-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+ 
+.policy-nav button {
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--verde);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+ 
+.policy-nav button:hover {
+  border-color: var(--verde);
+}
+ 
+.policy-section {
+  padding-top: 24px;
+  scroll-margin-top: 8px;
+}
+ 
+.policy-section h3 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+}
+ 
+.policy-section p {
+  margin: 0 0 10px;
+  color: var(--suave);
+  font-size: 14px;
+  line-height: 1.85;
+}
+ 
+.policy-list {
+  margin: 0 0 10px;
+  padding-left: 20px;
+  color: var(--suave);
+  font-size: 14px;
+  line-height: 1.85;
+}
+ 
+.policy-updated {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+ 
+.policy-footer {
+  padding: 16px 30px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+}
+ 
+.policy-footer .button {
+  min-height: 44px;
+  background: var(--verde);
+  color: var(--white);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+ 
+/* ---------- Pantallas pequeñas ---------- */
+ 
+@media (max-width: 900px) {
+  .pdp {
+    grid-template-columns: 1fr;
+  }
+ 
+  .pdp-gallery {
+    position: static;
+  }
+}
+ 
+@media (max-width: 560px) {
+  .pdp-pyramid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .pdp-buy {
+    flex-direction: column;
+  }
+ 
+  .pdp-quantity {
+    align-self: flex-start;
+  }
+ 
+  .pdp-warranty {
+    flex-wrap: wrap;
+  }
+ 
+  .policy-header,
+  .policy-body,
+  .policy-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+ 
+  .policy-panel {
+    max-height: 92dvh;
+  }
+}
+ 

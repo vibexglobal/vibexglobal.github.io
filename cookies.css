@@ -1,0 +1,410 @@
+/* ==================================================
+   VIBEX GLOBAL — CENTRO LEGAL (ventana emergente)
+   Más los enlaces legales de los pies de página.
+   ================================================== */
+
+.vx-overlay[hidden] { display: none !important; }
+
+.vx-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(17, 24, 19, 0.5);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: vx-fade 350ms ease both;
+}
+
+.vx-lock { overflow: hidden; }
+
+.vx-cookie {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(680px, 100%);
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
+  border: 1px solid rgba(122, 98, 50, 0.45);
+  background: #f6f1e5;
+  color: #1c2119;
+  box-shadow: 0 30px 80px rgba(11, 23, 18, 0.38);
+  animation: vx-rise 450ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.vx-cookie:focus { outline: none; }
+
+.vx-cookie :focus-visible {
+  outline: 2px solid #75592b;
+  outline-offset: 2px;
+}
+
+.vx-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  color: #4a5648;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.vx-close:hover { color: #1f4a35; }
+
+/* Zona con scroll: el contenido; los botones quedan siempre visibles abajo */
+.vx-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 34px 34px 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.vx-eyebrow {
+  margin: 0 0 10px;
+  color: #75592b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+}
+
+.vx-title {
+  margin: 0 0 12px;
+  padding-right: 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.vx-intro {
+  margin: 0 0 20px;
+  color: #4a5648;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.vx-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.vx-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(122, 98, 50, 0.3);
+}
+
+.vx-points strong {
+  color: #1f4a35;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.vx-points span {
+  color: #4a5648;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* ---------- Temas desplegables ---------- */
+
+.vx-accordion {
+  margin: 0 0 18px;
+  border-bottom: 1px solid rgba(122, 98, 50, 0.3);
+}
+
+.vx-item { border-top: 1px solid rgba(122, 98, 50, 0.3); }
+
+.vx-item > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.3;
+  list-style: none;
+  cursor: pointer;
+}
+
+.vx-item > summary::-webkit-details-marker { display: none; }
+
+.vx-item > summary::after,
+.vx-sub > summary::after {
+  content: "+";
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(122, 98, 50, 0.4);
+  border-radius: 50%;
+  color: #75592b;
+  font-family: "Segoe UI", system-ui, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.vx-item > summary:hover::after,
+.vx-sub > summary:hover::after { border-color: #1f4a35; }
+
+.vx-item[open] > summary::after,
+.vx-sub[open] > summary::after {
+  content: "−";
+  border-color: #1f4a35;
+  background: #1f4a35;
+  color: #f3e9cf;
+}
+
+.vx-item-body { padding: 0 0 16px; }
+
+.vx-p {
+  margin: 0 0 12px;
+  color: #4a5648;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.vx-list {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.vx-list li {
+  padding: 7px 0;
+  color: #4a5648;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.vx-list strong { color: #1c2119; font-weight: 600; }
+
+.vx-sub {
+  margin: 8px 0;
+  border: 1px solid rgba(122, 98, 50, 0.3);
+  background: rgba(255, 253, 248, 0.55);
+}
+
+.vx-sub > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  color: #1f4a35;
+  font-size: 13px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+.vx-sub > summary::-webkit-details-marker { display: none; }
+
+.vx-sub-body { padding: 2px 14px 10px; }
+
+.vx-sub-body .vx-list li { font-size: 12px; padding: 6px 0; }
+
+.vx-docs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0 0 12px;
+  color: #4a5648;
+  font-size: 12px;
+}
+
+.vx-docs a {
+  color: #1f4a35;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.vx-note {
+  margin: 0 0 8px;
+  color: #6b7467;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ---------- Casillas de cookies ---------- */
+
+.vx-options { margin: 6px 0 4px; }
+
+.vx-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid rgba(122, 98, 50, 0.3);
+  cursor: pointer;
+}
+
+.vx-option input {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: #1f4a35;
+}
+
+.vx-option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.vx-option-body span { color: #4a5648; font-size: 12px; }
+
+/* ---------- Botones ---------- */
+
+.vx-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 34px 22px;
+  border-top: 1px solid rgba(122, 98, 50, 0.3);
+  background: #f6f1e5;
+}
+
+/* Aceptar y Rechazar tienen exactamente el mismo aspecto */
+.vx-btn {
+  flex: 1 1 120px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #1f4a35;
+  background: #1f4a35;
+  color: #f3e9cf;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.vx-btn:hover { background: #173a29; }
+
+.vx-btn--ghost {
+  background: transparent;
+  color: #1f4a35;
+}
+
+.vx-btn--ghost:hover { background: rgba(31, 74, 53, 0.1); }
+
+.vx-btn--inline {
+  flex: none;
+  width: 100%;
+  margin-top: 10px;
+}
+
+@keyframes vx-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes vx-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-overlay,
+  .vx-cookie { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .vx-overlay { align-items: flex-end; padding: 8px; }
+  .vx-cookie { max-height: 92vh; max-height: 92dvh; }
+  .vx-scroll { padding: 28px 20px 8px; }
+  .vx-actions { padding: 14px 20px 18px; }
+  .vx-points { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ===== Enlaces legales de los pies de página ===== */
+
+.footer-link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 26px;
+}
+
+.footer-legal a,
+.footer-legal .footer-link-button {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity 200ms ease;
+}
+
+.footer-legal a:hover,
+.footer-legal .footer-link-button:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-rights-note {
+  margin-left: 14px;
+  opacity: 0.7;
+}
+
+.business-page .footer-legal .footer-link-button {
+  color: var(--vb-gold-light, inherit);
+}
+
+/* Pie de las páginas de producto */
+.pp-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding: 22px clamp(18px, 5vw, 64px);
+  border-top: 1px solid rgba(122, 98, 50, 0.26);
+  color: #4a5648;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 760px) {
+  .footer-legal { justify-content: flex-start; gap: 8px 18px; }
+  .footer-rights-note { display: block; margin: 4px 0 0; }
+}
